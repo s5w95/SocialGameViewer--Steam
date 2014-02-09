@@ -1,0 +1,14 @@
+ersetzte folgende Dateien:
+inc/additional-functions/socialgameviewer.php
+__template__/menu/socialgameviewer.html
+
+Kopiere folgende neue Dateien:
+socialgameviewer/sgv_steam.php
+_install/install.php
+
+install.php ausführen und anschließend löschen!
+Danach müssen die einstellungen im Admin menü wieder richtig eingestellt werden.
+
+Done!
+
+MfG Tune389

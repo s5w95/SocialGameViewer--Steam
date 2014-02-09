@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <title>SocialGameViewer Mod - ReadMe</title>
+    <style>
+       <!--
+        html,body {
+          background-color:#020202;
+        }
+
+        a:link, a:visited {
+          color: #444444;
+          text-decoration:none;
+          font-weight:bold;
+        }
+
+        a:active, a:hover {
+          color: #000000;
+        }
+
+        td.contentHead {
+          width: 100%;
+          margin:10px 0 0 7px;
+          padding:0;
+          text-align:left;
+          font-size:20px;
+          color:#333;
+          border-bottom:1px dotted #333;
+          font-weight:normal;
+        }
+
+        td.content {
+          font-size:13px;
+          color:#333;
+          margin:9px 0 8px 9px;
+          padding:0;
+        }
+        
+        td.datei {
+          border: 1px double #000000;
+          cursor: pointer;
+          font-weight: bold;
+          background-color:#F2F2F2;
+          width: 750px;
+          padding:5px 5px;
+          font-family: "Courier New", Courier, monospace;
+          font-size:14px;          
+        }
+
+        p.codesearch,p.codepast {
+          border:1px solid #DDD;
+          background-color:#F2F2F2;
+          width: 750px;
+          padding:5px 5px;
+          font-family:"Courier New", Courier, monospace;
+          font-size:10px;         
+          margin: 0px;  
+        }
+
+        p.codepast {
+          border:1px solid #DDD;
+          background-color:#c8f7b5;
+        }        
+        
+        textarea {
+          width: 750px;
+          overflow: auto;          
+        }  
+      -->
+    </style>
+    <script type="text/javascript">
+      function show(Id) {
+        var showText = document.getElementById('show'+Id);
+        var showBild = document.getElementById('img'+Id);
+        var Minus="http://images.dzcp-zone.de/readmes/minus.gif", Plus="http://images.dzcp-zone.de/readmes/plus.gif";
+        if (showText.style.display == 'none') {
+          showText.style.display = '';
+          showBild.src = Minus;
+        } else {
+          showText.style.display = 'none';
+          showBild.src = Plus;
+        }
+      }
+    </script> 
+  </head>
+
+  <body style="text-align:center">
+    <table width="800" style="border: 2px solid #ccc;" align="center" bgcolor="white" cellspacing="10" cellpadding="0">
+
+<!--############################################################################-->
+<!--################################   START   #################################-->
+<!--############################################################################-->
+      <tr>
+        <td class="contentHead">SocialGameViewer - ReadMe</td>
+      </tr>
+      <tr>
+        <td class="content"><p>Dieses Addon zeigt eine Steamsignatur aller Member an die Online sind oder Spielen (Vorrausgesetzt die Steamid ist eingetragen) </p>
+      </tr>
+
+<!--############################################################################-->
+<!--####################   HAFTUNGSAUSSCHLUSS & COPYRIGHT   ####################-->
+<!--############################################################################-->
+     <tr>
+        <td class="contentHead">Haftungsausschluss</td>
+      </tr>
+      <tr>
+        <td class="content"><br>
+          Wir &uuml;bernehmen keinerlei Verantwortung, f&uuml;r Sch&auml;den die durch das einbinden der Mod/des Addons entstehen. Das einbinden und
+          nutzen erfolgt demnach auf eigene Gefahr.<br>
+          <br>
+          Vor den einbinden der Mod/des Addons sollte eine Datenbanksicherung durchgef&uuml;hrt werden. Des Weiteren empfehlen wir,
+          von allen Dateien welche ge&auml;ndert werden m&uuml;ssen (unter „Ben&ouml;tigte Dateien“ aufgelistet), ebenfalls eine Sicherheitskopie anzufertigen.
+        </td>
+      </tr>
+
+<!--############################################################################-->
+<!--##########################   BENÖTIGTE  DATEIEN   ##########################-->
+<!--############################################################################-->
+      <tr>
+        <td class="contentHead">Ben&ouml;tigte Dateien</td>
+      </tr>
+      <tr>
+        <td class="content">
+          Folgende Datei werden f&uuml;r diese Mod/dieses Addon ben&ouml;tigt:<br>
+          <ul>
+            <li>_install/install.php</li>
+          </ul>          
+          <ul>
+            <li>admin/menue/socialgameviewer.php</li>
+			<li>admin/menue/socialgameviewer.gif</li>
+			<li>inc/additional-functions/socialgameviewer.php</li>
+			<li>socialgameviewer/sgv_steam.php</li>
+			<li>inc/additional-languages/deutsch/socialgameviewer.php</li>
+			<li>__template__/admin/form_socialgameviewer.html</li>
+			<li>__template__/admin/socialgameviewer.html</li>
+			<li>__template__/menue/socialgameviewer.html</li>
+          </ul></td>
+      </tr>
+
+<!--#################################################################################-->
+<!--###############################   INSTALLATION   ###############################-->
+<!--#################################################################################-->
+      <tr>
+        <td class="contentHead"><a name="install_addons"></a>Installation</td>
+      </tr>        
+      <tr>
+        <td class="content">
+          <p><br>
+          	
+          	Damit es zu keinen Fehler kommt, m&uuml;ssen zuerst die Tabellen in der Datenbank angelegt werden. Hierf&uuml;r haben wir einen kleinen
+          	Installer geschrieben, welcher am Ordnernamen _install_XXXXXXX zu erkennen ist. Ladet diesen Ordner in das Hauptverzeichnis eures deV!L'z Clanportals.<br>
+          	<br>
+          	
+          	<b>Ruft anschliesend eure Seite auf</b> und <b>f&uuml;gt hinter die Adresse folgendes ein</b>:<br>
+          	<br>
+          	
+          	</p>
+          <p class="codepast">/_install/install.php</p><br>
+          Wenn die Installation erfolgreich verlief <b>l&ouml;scht zur Sicherheit den installer-Ordner</b> von euren Webspace.<br>          
+          <br>
+          
+          Ändert nun die unten stehenden Dateien entsprechend den Anweisungen ab.
+		  
+		  <p>Anschließend kann der Viewer mittels [socialgameviewer] überall eingebunden. Das Menü befindet sich meistens in der Datei __template__/index.html.</p>
+		  
+        </td>
+      </tr>
+      <tr>
+        <td class="contentHead"><a name="install_addons"></a>Manuelle änderungen</td>
+      </tr> 
+<!-------------------------------- user/index.php ------------------------------------>
+      <tr>
+        <td class="datei" id="user" onClick="show(1)"><img src="http://images.dzcp-zone.de/readmes/plus.gif" id="img1">inc/config.php</td>
+      </tr>
+      <tr id="show1" style="display: none;">
+        <td class="content">
+          <b>Sucht</b> nach folgenden Zeilen:
+          <p class="codesearch">
+            <textarea rows="1" wrap="off" readonly>"userstats" =>      $prefix."userstats",</textarea></p><br>
+
+          <b>F&uuml;gt</b> direkt <b>hinter</b> dieser Zeile folgendes ein:
+          <p class="codepast">
+            <textarea rows="3" wrap="off">		/* SocialGameViewer by Tune389 */
+	        "socialgameviewer_settings" =>   $prefix."socialgameviewer_settings",
+	        /* SocialGameViewer by Tune389 */
+			</textarea></p><br> 
+         
+        </td>
+      </tr> 
+    <tr>
+        <td class="contentHead"><a name="install_addons"></a>Credits/Infos</td>
+      </tr> 
+        <tr>
+        <td class="content">
+          <p>Dieses Addon ist mein erstes und daher vermutlich noch teilweise Verbuggt. Es befindet sich ein Updatecheck im Admin Bereich der von meinem Server die Version Prüft und bei einer neu Verfügbaren auch direkt ein Download anbietet.</p>
+		  <p>by HD-Gamers.de - Tune389 aka D4yl1n3</p>
+        </td>
+      </tr>   
+
+      <tr>
+        <td height="10"></td>
+      </tr>
+    </table>
+  </body>
+</html>
