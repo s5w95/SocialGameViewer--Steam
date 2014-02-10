@@ -1,13 +1,13 @@
 /inc/config.php
 suche:
 "socialgameviewer_settings" =>   $prefix."socialgameviewer_settings",
-Danach einfügen:
+Danach einfÃ¼gen:
 "socialgameviewer_users" =>   $prefix."socialgameviewer_users",
+
+Installer ausfÃ¼hren.
 
 Alle Files ersetzten.
 Cache Leeren.
-
-Installer ausführen.
 
 Done
 
