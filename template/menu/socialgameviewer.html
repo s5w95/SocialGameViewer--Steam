@@ -1,9 +1,12 @@
 <script type="text/javascript">
+
 	$.ajax(
 	{
 		type: "GET",
 		url: "../socialgameviewer/sgv_steam.php",
 		data: "sgv_loading",
+		cache:false,
+		dataType:"html",
 		success: function(sgv_loading)
 	{
 		$('#sgv_loading').empty();
@@ -14,4 +17,3 @@
  <div id="sgv_loading" style="text-align:center;">
 	<img src="../inc/images/ajax_loading.gif" alt="" />				   
 </div>
-							 
