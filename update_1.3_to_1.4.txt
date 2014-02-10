@@ -1,0 +1,14 @@
+/inc/config.php
+suche:
+"socialgameviewer_settings" =>   $prefix."socialgameviewer_settings",
+Danach einfügen:
+"socialgameviewer_users" =>   $prefix."socialgameviewer_users",
+
+Alle Files ersetzten.
+Cache Leeren.
+
+Installer ausführen.
+
+Done
+
+MfG Tune389

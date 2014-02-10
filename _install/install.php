@@ -13,16 +13,30 @@ $version = "1.3";
 ## INSTALLER ##
 if(isset($_POST['submit'])) {
 		
-		db("DROP TABLE IF EXISTS ".$sql_prefix."socialgameviewer_settings");			
+		db("DROP TABLE IF EXISTS ".$sql_prefix."socialgameviewer_settings");		
+		db("DROP TABLE IF EXISTS ".$sql_prefix."socialgameviewer_users");			
 				
 		db("CREATE TABLE ".$sql_prefix."socialgameviewer_settings (
 					`id` int(1) NOT NULL auto_increment,
-					`max_disp` tinyint(1),
+					`max_disp` int(10),
 					`x_size` int(20),
 					`cache_delay` int(20),
 					`version` varchar(5),
 					`spalte` varchar(10),
 					`table` varchar(10),
+					`view_vac` int(1),
+					`view_privat` int(1),
+					`view_steamlink` int(1),
+					`view_offline` int(1),
+					`view_addfriend` int(1),
+					`steam_api_key` varchar(32),
+					PRIMARY KEY  (`id`))"); 
+					
+		db("CREATE TABLE ".$sql_prefix."socialgameviewer_users (
+					`id` int(1) NOT NULL auto_increment,
+					`steamid` varchar(18),
+					`comid` varchar(18),
+					`userid` int(5),
 					PRIMARY KEY  (`id`))"); 
 					
 		db(" INSERT INTO `".$sql_prefix."socialgameviewer_settings` (
@@ -32,10 +46,16 @@ if(isset($_POST['submit'])) {
 		`cache_delay` ,
 		`version` ,
 		`spalte` ,
-		`table`
+		`table`,
+		`view_vac`,
+		`view_privat`,
+		`view_steamlink`,
+		`view_offline`,
+		`view_addfriend`,
+		`steam_api_key`
 		)
 		VALUES (
-		NULL , '20', '180', '300', '".$version."', 'steamid', 'users'
+		NULL , '20', '180', '300', '".$version."', 'steamid', 'users', '1', '1', '1', '0', '0', '90245BB467E201DE99CF36C6FD1ED9FA'
 		);");
 							
 	if ($fehler == 0) {
