@@ -23,11 +23,12 @@ if(_adminMenu != 'true') exit;
 												  "table" => re($get['table']),
 												  "spalte" => re($get['spalte']),
 												  "view_vac" => re($get['view_vac'] == 1 ? ' checked="checked"' : ''),
-												  "view_privat" => re($get['view_private'] == 1 ? ' checked="checked"' : ''),
+												  "view_privat" => re($get['view_privat'] == 1 ? ' checked="checked"' : ''),
 												  "view_offline" => re($get['view_offline'] == 1 ? ' checked="checked"' : ''),
 												  "view_addfriend" => re($get['view_addfriend'] == 1 ? ' checked="checked"' : ''),
 												  "view_steamlink" => re($get['view_steamlink'] == 1 ? ' checked="checked"' : ''),
-												  "cache_delay" => re($get['cache_delay'])
+												  "cache_delay" => re($get['cache_delay']),
+												  "steam_api_key" => re($get['steam_api_key'])
 												  ));
 	 
 	$status = simplexml_load_file("http://hd-gamers.de/addons/socialgameviewer/version.xml");
@@ -60,7 +61,8 @@ if(_adminMenu != 'true') exit;
 					   `view_offline`    = '".up($_POST['view_offline'])."',
 					   `view_addfriend`    = '".up($_POST['view_addfriend'])."',
 					   `view_steamlink`    = '".up($_POST['view_steamlink'])."',
-                       `cache_delay`       = '".up($_POST['cache_delay'])."'
+                       `cache_delay`       = '".up($_POST['cache_delay'])."',
+					   `steam_api_key`       = '".up($_POST['steam_api_key'])."'
                    WHERE id = 1");
 
         $show = info(_config_set, "?admin=socialgameviewer");
