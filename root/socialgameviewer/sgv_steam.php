@@ -73,7 +73,7 @@ $dir = "socialgameviewer";
 				if (!$settings->view_offline && !$result->response->players[$i]->personastate) {}
 				//else if (!$settings->view_vac && $result->response->players[$i]) {}
 				else if (!$settings->view_private && $result->response->players[$i]->communityvisibilitystate < 2) {}
-				else if (!empty($result->response->players[$i])) $output .= '<a href="'.$href.'"><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" /></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
+				else if (!empty($result->response->players[$i])) $output .= '<a href="'.$href.'" target="_blank"><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" /></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
 				$online_member++;
 			}											
 			
