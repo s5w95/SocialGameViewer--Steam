@@ -9,9 +9,9 @@ include(basePath."/inc/bbcode.php");
 lang($language);
 $dir = "socialgameviewer"; 
 
-   global $db, $userid, $llreg;
+   global $db;
 
-		$settings =  mysql_fetch_object( db('SELECT * FROM '.$db['socialgameviewer_settings'].' WHERE id = 1 LIMIT 1'));
+		$settings =  mysqli_fetch_object( db('SELECT * FROM '.$db['socialgameviewer_settings'].' WHERE id = 1 LIMIT 1'));
 		if ($settings->view_addfriend == 1) {$x_size = $settings->x_size*0.88; $width = $settings->x_size*0.12; $add = '<img src="http://steamsignature.com/AddFriend.png" width="'.$width.'"/>';}
 		else $x_size = $settings->x_size;
         $qry_steam = db ( 'SELECT t1.id,t1.steamid FROM '.$db['users'].' t1 WHERE t1.steamid NOT LIKE "" AND t1.steamid NOT IN (SELECT steamid FROM '.$db['socialgameviewer_users'].');' );
@@ -73,7 +73,12 @@ $dir = "socialgameviewer";
 				if (!$settings->view_offline && !$result->response->players[$i]->personastate) {}
 				//else if (!$settings->view_vac && $result->response->players[$i]) {}
 				else if (!$settings->view_private && $result->response->players[$i]->communityvisibilitystate < 2) {}
-				else if (!empty($result->response->players[$i])) $output .= '<a href="'.$href.'" target="_blank"><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" /></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
+				else if (!empty($result->response->players[$i])) 
+				{
+					if ($settings->view_newtab) $add2 = 'target="_blank"';
+					else $add2 = "";
+					$output .= '<a href="'.$href.'" '.$add2.'><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" /></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
+				}
 				$online_member++;
 			}											
 			

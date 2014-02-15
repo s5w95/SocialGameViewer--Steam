@@ -29,6 +29,7 @@ if(isset($_POST['submit'])) {
 					`view_steamlink` int(1),
 					`view_offline` int(1),
 					`view_addfriend` int(1),
+					`view_newtab` int(1),
 					`steam_api_key` varchar(32),
 					PRIMARY KEY  (`id`))"); 
 					
@@ -52,10 +53,11 @@ if(isset($_POST['submit'])) {
 		`view_steamlink`,
 		`view_offline`,
 		`view_addfriend`,
+		`view_newtab`,
 		`steam_api_key`
 		)
 		VALUES (
-		NULL , '20', '180', '300', '".$version."', 'steamid', 'users', '1', '1', '1', '0', '0', '90245BB467E201DE99CF36C6FD1ED9FA'
+		NULL , '20', '180', '300', '".$version."', 'steamid', 'users', '1', '1', '1', '0', '0', '1','90245BB467E201DE99CF36C6FD1ED9FA'
 		);");
 							
 	if ($fehler == 0) {

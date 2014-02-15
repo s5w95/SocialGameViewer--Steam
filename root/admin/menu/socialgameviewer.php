@@ -27,6 +27,7 @@ if(_adminMenu != 'true') exit;
 												  "view_offline" => re($get['view_offline'] == 1 ? ' checked="checked"' : ''),
 												  "view_addfriend" => re($get['view_addfriend'] == 1 ? ' checked="checked"' : ''),
 												  "view_steamlink" => re($get['view_steamlink'] == 1 ? ' checked="checked"' : ''),
+											      "view_newtab" => re($get['view_newtab'] == 1 ? ' checked="checked"' : ''),												 
 												  "cache_delay" => re($get['cache_delay']),
 												  "steam_api_key" => re($get['steam_api_key'])
 												  ));
@@ -62,7 +63,8 @@ if(_adminMenu != 'true') exit;
 					   `view_addfriend`    = '".up($_POST['view_addfriend'])."',
 					   `view_steamlink`    = '".up($_POST['view_steamlink'])."',
                        `cache_delay`       = '".up($_POST['cache_delay'])."',
-					   `steam_api_key`       = '".up($_POST['steam_api_key'])."'
+					   `steam_api_key`       = '".up($_POST['steam_api_key'])."',
+					   `view_newtab`       = '".up($_POST['view_newtab'])."'
                    WHERE id = 1");
 
         $show = info(_config_set, "?admin=socialgameviewer");
