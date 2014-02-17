@@ -57,14 +57,14 @@ $dir = "socialgameviewer";
 			}
 
 			if ($update_counter != 0) $output = $update_counter." - Profiles Updated!<br/><hr>";
-			$qry_steam = db ( 'SELECT t1.comid, t1.steamid FROM '.$db['socialgameviewer_users'].' t1 INNER JOIN '.$db['users'].' t2 ON (t1.steamid = t2.steamid)' );
+			$qry_steam = db ( 'SELECT t1.comid, t1.steamid, t1.userid, t1.id FROM '.$db['socialgameviewer_users'].' t1 INNER JOIN '.$db['users'].' t2 ON (t1.steamid = t2.steamid)' );
 			$count = 0;
-				while ( $get = _fetch ( $qry_steam ))	
+			while ( $get = _fetch ( $qry_steam ))	
 			{
 				if ($get['comid'] != 0) 
 				{
+					$playerid[(string)$get['comid']] = $get['userid'];
 					$players .= $get['comid'].",";$count++;
-					playerid[$get['comid']] = $get['userid'];
 				}
 			}
 			$url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$settings->steam_api_key."&steamids=".substr($players,0,-1);		
@@ -73,10 +73,10 @@ $dir = "socialgameviewer";
 			{				
 				$steamid = $result->response->players[$i]->steamid;
 				if ($settings->view_steamlink) $href = 'http://steamcommunity.com/profiles/'.$steamid;						
-				else $href = '../user/?action=user&amp;id='.playerid[$steamid];
+				else $href = '../user/?action=user&amp;id='.$playerid[(string)$steamid];
 				if (!$settings->view_offline && !$result->response->players[$i]->personastate) {}
 				//else if (!$settings->view_vac && $result->response->players[$i]) {}
-				else if (!$settings->view_private && $result->response->players[$i]->communityvisibilitystate < 2) {}
+				else if (!$settings->view_privat && $result->response->players[$i]->communityvisibilitystate < 2) {}
 				else if (!empty($result->response->players[$i])) 
 				{
 					if ($settings->view_newtab) $add2 = 'target="_blank"';
