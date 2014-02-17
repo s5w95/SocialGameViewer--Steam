@@ -61,7 +61,11 @@ $dir = "socialgameviewer";
 			$count = 0;
 				while ( $get = _fetch ( $qry_steam ))	
 			{
-				if ($get['comid'] != 0) {$players .= $get['comid'].",";$count++;}
+				if ($get['comid'] != 0) 
+				{
+					$players .= $get['comid'].",";$count++;
+					playerid[$get['comid']] = $get['userid'];
+				}
 			}
 			$url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$settings->steam_api_key."&steamids=".substr($players,0,-1);		
 			$result = json_decode(file_get_contents($url));
@@ -69,7 +73,7 @@ $dir = "socialgameviewer";
 			{				
 				$steamid = $result->response->players[$i]->steamid;
 				if ($settings->view_steamlink) $href = 'http://steamcommunity.com/profiles/'.$steamid;						
-				else $href = '../user/?action=user&amp;id=aviableSoon';
+				else $href = '../user/?action=user&amp;id='.playerid[$steamid];
 				if (!$settings->view_offline && !$result->response->players[$i]->personastate) {}
 				//else if (!$settings->view_vac && $result->response->players[$i]) {}
 				else if (!$settings->view_private && $result->response->players[$i]->communityvisibilitystate < 2) {}
