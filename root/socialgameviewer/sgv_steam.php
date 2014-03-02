@@ -20,7 +20,6 @@ $dir = "socialgameviewer";
 		if (time() - filemtime($cache) > $settings->cache_delay)
 		{	
 			$online_member = 0;	
-			$update_counter = 0;
 			$handle = fopen($cache, "w");
 			while ( $get = _fetch ( $qry_steam ))	
 			{
@@ -53,10 +52,8 @@ $dir = "socialgameviewer";
 					}
 				}
 				db ("INSERT INTO ".$db['socialgameviewer_users']." (`id`, `steamid`, `comid`, `userid`) VALUES (NULL, '".$get['steamid']."', '".$comid."', '".$get['id']."');");
-				$update_counter++;
 			}
 
-			if ($update_counter != 0) $output = $update_counter." - Profiles Updated!<br/><hr>";
 			$qry_steam = db ( 'SELECT t1.comid, t1.steamid, t1.userid, t1.id FROM '.$db['socialgameviewer_users'].' t1 INNER JOIN '.$db['users'].' t2 ON (t1.steamid = t2.steamid)' );
 			$count = 0;
 			while ( $get = _fetch ( $qry_steam ))	
