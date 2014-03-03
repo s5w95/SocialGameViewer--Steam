@@ -1,4 +1,4 @@
-<?	
+<?php
 # SocialGameViewer by Tune389
 ## OUTPUT BUFFER START ##
 include("../inc/buffer.php");
@@ -14,7 +14,7 @@ $dir = "socialgameviewer";
 		$settings =  mysqli_fetch_object( db('SELECT * FROM '.$db['socialgameviewer_settings'].' WHERE id = 1 LIMIT 1'));
 		if ($settings->view_addfriend == 1) {$x_size = $settings->x_size*0.88; $width = $settings->x_size*0.12; $add = '<img src="http://steamsignature.com/AddFriend.png" width="'.$width.'"/>';}
 		else $x_size = $settings->x_size;
-        $qry_steam = db ( 'SELECT t1.id,t1.steamid FROM '.$db['users'].' t1 WHERE t1.steamid NOT LIKE "" AND t1.steamid NOT IN (SELECT steamid FROM '.$db['socialgameviewer_users'].');' );
+        $qry_steam = db ( 'SELECT t1.id,t1.steamid FROM '.$db['users'].' t1 WHERE t1.steamid NOT LIKE "" AND t1.steamid NOT IN (SELECT steamid FROM '.$db['socialgameviewer_users'].') and level > 2' );
 		$cache = basePath.'/__cache/'.md5(socialgameviewer_1_4).'.cache';
 		
 		if (time() - filemtime($cache) > $settings->cache_delay)
@@ -55,6 +55,11 @@ $dir = "socialgameviewer";
 			}
 
 			$qry_steam = db ( 'SELECT t1.comid, t1.steamid, t1.userid, t1.id FROM '.$db['socialgameviewer_users'].' t1 INNER JOIN '.$db['users'].' t2 ON (t1.steamid = t2.steamid)' );
+            while (mysqli_fetch_object(db('select id FROM '.$db['socialgameviewer_users'].' WHERE userid = (select id from '.$db['users'].' where level < 3 limit 1)'))->id != null)
+			{
+				db('delete FROM '.$db['socialgameviewer_users'].' WHERE userid = (select id from '.$db['users'].' where level < 3 limit 1)');
+			}
+
 			$count = 0;
 			while ( $get = _fetch ( $qry_steam ))	
 			{
@@ -72,7 +77,6 @@ $dir = "socialgameviewer";
 				if ($settings->view_steamlink) $href = 'http://steamcommunity.com/profiles/'.$steamid;						
 				else $href = '../user/?action=user&amp;id='.$playerid[(string)$steamid];
 				if (!$settings->view_offline && !$result->response->players[$i]->personastate) {}
-				//else if (!$settings->view_vac && $result->response->players[$i]) {}
 				else if (!$settings->view_privat && $result->response->players[$i]->communityvisibilitystate < 2) {}
 				else if (!empty($result->response->players[$i])) 
 				{
@@ -89,4 +93,3 @@ $dir = "socialgameviewer";
 			
 		} else $output = file_get_contents($cache);
 	echo $output;
-?>
