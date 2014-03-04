@@ -68,3 +68,4 @@ if(_adminMenu != 'true') exit;
         $show = info(_config_set, "?admin=socialgameviewer");
       }
     }
+ ?>
