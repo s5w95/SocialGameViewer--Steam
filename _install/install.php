@@ -9,7 +9,7 @@ $time_start = generatetime();
 lang($language);
 $where = "Installer";
 $title = $pagetitle." - ".$where."";
-$version = "1.3";
+$version = "1.4";
 ## INSTALLER ##
 if(isset($_POST['submit'])) {
 		
