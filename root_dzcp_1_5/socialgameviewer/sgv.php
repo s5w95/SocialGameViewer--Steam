@@ -11,7 +11,7 @@ $dir = "socialgameviewer";
 
    global $db;
 
-		$settings =  mysqli_fetch_object( db('SELECT * FROM '.$db['socialgameviewer_settings'].' WHERE id = 1 LIMIT 1'));
+		$settings =  mysql_fetch_object( db('SELECT * FROM '.$db['socialgameviewer_settings'].' WHERE id = 1 LIMIT 1'));
 		if ($settings->view_addfriend == 1) {$x_size = $settings->x_size*0.88; $width = $settings->x_size*0.12; $add = '<img src="http://steamsignature.com/AddFriend.png" width="'.$width.'"/>';}
 		else $x_size = $settings->x_size;
         $qry_steam = db ( 'SELECT t1.id,t1.steamid FROM '.$db['users'].' t1 WHERE t1.steamid NOT LIKE "" AND t1.steamid NOT IN (SELECT steamid FROM '.$db['socialgameviewer_users'].') and level > 2' );
@@ -55,7 +55,7 @@ $dir = "socialgameviewer";
 			}
 
 			$qry_steam = db ( 'SELECT t1.comid, t1.steamid, t1.userid, t1.id FROM '.$db['socialgameviewer_users'].' t1 INNER JOIN '.$db['users'].' t2 ON (t1.steamid = t2.steamid)' );
-            while (mysqli_fetch_object(db('select id FROM '.$db['socialgameviewer_users'].' WHERE userid = (select id from '.$db['users'].' where level < 3 limit 1)'))->id != null)
+            while (mysql_fetch_object(db('select id FROM '.$db['socialgameviewer_users'].' WHERE userid = (select id from '.$db['users'].' where level < 3 limit 1)'))->id != null)
 			{
 				db('delete FROM '.$db['socialgameviewer_users'].' WHERE userid = (select id from '.$db['users'].' where level < 3 limit 1)');
 			}
@@ -82,7 +82,7 @@ $dir = "socialgameviewer";
 				{
 					if ($settings->view_newtab) $add2 = 'target="_blank"';
 					else $add2 = "";
-					$output .= '<a href="'.$href.'" '.$add2.'><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" /></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
+					$output .= '<a href="'.$href.'" '.$add2.'><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" height="'. ($x_size/5.33) .'"/></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
 				}
 				$online_member++;
 			}											
