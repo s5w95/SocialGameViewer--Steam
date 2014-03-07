@@ -2,10 +2,10 @@
 #########################################################################
 ####                            PLATZHALTER                          ####
 #### --------------------------------------------------------------- ####
-#### Wenn Ihr eure Seite in mehreren Sprachen zur Verfügung stellt,  ####
-#### müsst Ihr diese Platzhalter aus dieser Datei ausschneiden und   ####
+#### Wenn Ihr eure Seite in mehreren Sprachen zur VerfÃ¼gung stellt,  ####
+#### mÃ¼sst Ihr diese Platzhalter aus dieser Datei ausschneiden und   ####
 #### in den jeweiligen Language-Dateien (inc/lang/languages)         ####
-#### einfügen.                                                       ####
+#### einfÃ¼gen.                                                       ####
 #########################################################################
-define(_config_socialgameviewer, 'SocialGameViewer');
+define('_config_socialgameviewer', 'SocialGameViewer');
 ?>

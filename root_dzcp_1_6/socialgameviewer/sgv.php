@@ -15,7 +15,7 @@ $dir = "socialgameviewer";
 		if ($settings->view_addfriend == 1) {$x_size = $settings->x_size*0.88; $width = $settings->x_size*0.12; $add = '<img src="http://steamsignature.com/AddFriend.png" width="'.$width.'"/>';}
 		else $x_size = $settings->x_size;
         $qry_steam = db ( 'SELECT t1.id,t1.steamid FROM '.$db['users'].' t1 WHERE t1.steamid NOT LIKE "" AND t1.steamid NOT IN (SELECT steamid FROM '.$db['socialgameviewer_users'].') and level > 2' );
-		$cache = basePath.'/__cache/'.md5(socialgameviewer_1_4).'.cache';
+		$cache = basePath.'/inc/_cache_/'.md5(socialgameviewer_1_4).'.cache';
 		
 		if (time() - filemtime($cache) > $settings->cache_delay)
 		{	
@@ -71,7 +71,7 @@ $dir = "socialgameviewer";
 			}
 			$url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$settings->steam_api_key."&steamids=".substr($players,0,-1);		
 			$result = json_decode(file_get_contents($url));
-			for ($i=0;$i<$count;$i++)
+			for ($i=0;$i<$count  && $online_member < $settings->max_disp;$i++)
 			{				
 				$steamid = $result->response->players[$i]->steamid;
 				if ($settings->view_steamlink) $href = 'http://steamcommunity.com/profiles/'.$steamid;						
@@ -83,10 +83,9 @@ $dir = "socialgameviewer";
 					if ($settings->view_newtab) $add2 = 'target="_blank"';
 					else $add2 = "";
 					$output .= '<a href="'.$href.'" '.$add2.'><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" height="'. ($x_size/5.33) .'"/></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
-				}
-				$online_member++;
-			}											
-			
+                                        $online_member++;
+                                }
+                        }	
 			if ($online_member == 0) $output = "Keine Member Online";
 			fwrite($handle, $output); 				
 			fclose($handle);
