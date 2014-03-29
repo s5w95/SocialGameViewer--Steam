@@ -31,7 +31,7 @@ if(_adminMenu != 'true') exit;
 												  "steam_api_key" => re($get['steam_api_key'])
 												  ));
 	 
-	$status = simplexml_load_file("http://hd-gamers.de/addons/socialgameviewer/version.xml");
+	$status = @simplexml_load_file("http://hd-gamers.de/addons/socialgameviewer/version.xml");
 	if ($status->version > $get['version']) 
 	{
 		$version = '<font color="#FE2E2E">'.$get['version'].'</font> - <a href="'.$status->download.'">Update Downloaden</a>';
