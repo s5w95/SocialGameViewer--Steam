@@ -82,7 +82,7 @@ $dir = "socialgameviewer";
 				{
 					if ($settings->view_newtab) $add2 = 'target="_blank"';
 					else $add2 = "";
-					$output .= '<a href="'.$href.'" '.$add2.'><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" height="'. ($x_size/5.33) .'"/></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
+					$output .= '<a href="'.$href.'" '.$add2.'><img src="http://steamsigmaker.de/komedy/'.$steamid.'.png" width="'.$x_size.'" height="'. ($x_size/5.33) .'"/></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
                                         $online_member++;
                                 }
                         }	
