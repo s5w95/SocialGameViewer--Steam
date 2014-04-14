@@ -11,6 +11,9 @@ $dir = "socialgameviewer";
 
    global $db;
 
+        	if ($language == deutsch) {$lang = 'german';}
+        	else if ($language == english) {$lang = 'english';}
+
 		$settings =  mysqli_fetch_object( db('SELECT * FROM '.$db['socialgameviewer_settings'].' WHERE id = 1 LIMIT 1'));
 		if ($settings->view_addfriend == 1) {$x_size = $settings->x_size*0.88; $width = $settings->x_size*0.12; $add = '<img src="http://steamsignature.com/AddFriend.png" width="'.$width.'"/>';}
 		else $x_size = $settings->x_size;
@@ -82,7 +85,7 @@ $dir = "socialgameviewer";
 				{
 					if ($settings->view_newtab) $add2 = 'target="_blank"';
 					else $add2 = "";
-					$output .= '<a href="'.$href.'" '.$add2.'><img src="http://steamsignature.com/status/english/'.$steamid.'.png" width="'.$x_size.'" height="'. ($x_size/5.33) .'"/></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
+					$output .= '<a href="'.$href.'" '.$add2.'><img src="http://steamsignature.com/status/'.$lang.'/'.$steamid.'.png" width="'.$x_size.'" height="'. ($x_size/5.33) .'"/></a><a href="steam://friends/add/'.$steamid.'" >'.$add.'</a><br/>' ;
                                         $online_member++;
                                 }
                         }	
