@@ -10,7 +10,6 @@ include(basePath."/inc/config.php");
 include(basePath."/inc/bbcode.php");
 
 ## SETTINGS ##
-$time_start = generatetime();
 lang($language);
 $dir = "socialgameviewer";
 
@@ -90,7 +89,7 @@ function checkDeRankedUsers() {
     global $prefix;
     while (mysqli_fetch_object(db('select id FROM '.$prefix.'socialgameviewer_users WHERE userid = (select id from '.$prefix.'users where level < 3 limit 1)'))->id != null)
     {
-        db('delete FROM '.$prefix.'socialgameviewer_users WHERE userid = (select id from '.$db['users'].' where level < 3 limit 1)');
+        db('delete FROM '.$prefix.'socialgameviewer_users WHERE userid = (select id from '.$prefix.'users where level < 3 limit 1)');
     }
 }
 
