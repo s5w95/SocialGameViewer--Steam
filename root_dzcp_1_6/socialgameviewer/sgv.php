@@ -60,11 +60,11 @@ function getListFrom($playerid) {
 	$add = "";
     if ($settings->view_addfriend) {
 		$x_size = $settings->x_size*0.88;
+		$width = $settings->x_size*0.12;
 		$add = '<img src="http://steamsignature.com/AddFriend.png" width="'.$width.'"/>'
 	} else {
 		$x_size = $settings->x_size;
 	}
-    $width = $settings->x_size*0.12; 
 
     for ($i=0 ; $i < $count  && $online_member < $settings->max_disp ; $i++)
     {				
