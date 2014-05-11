@@ -2,6 +2,7 @@
 ## OUTPUT BUFFER START ##
 include("../inc/buffer.php");
 ## INCLUDES ##
+include(basePath."/inc/debugger.php");
 include(basePath."/inc/config.php");
 include(basePath."/inc/bbcode.php");
 ## SETTINGS ##
@@ -93,7 +94,7 @@ if(isset($_POST['submit'])) {
            </tr>
            <tr>
              <td class="contentMainFirst" align="center">
-               Hallo und herzlichen Dank, dass du dieses Addon für das deV!L’z Clanportal von <a href="http://www.HD-Gamers.de" target="_blank">www.HD-Gamers.de</a>
+               Hallo und herzlichen Dank, dass du dieses Addon fï¿½r das deV!Lï¿½z Clanportal von <a href="http://www.HD-Gamers.de" target="_blank">www.HD-Gamers.de</a>
                heruntergeladen hast. Dieser Installer soll dir die Arbeit abnehmen, die ben&ouml;tigten Tabellen in der Datenbank manuell erstellen zu m&uuml;ssen.<b>
                <br /><br />
                <b><span style="text-align:center"><u>!!!! WICHTIG !!!!</u></span><br />Erstell vor dem ausf&uuml;hren des Installers ein Datenbank BackUp. Wir haften f&uuml;r keine Sch&auml;den!</b><br />
