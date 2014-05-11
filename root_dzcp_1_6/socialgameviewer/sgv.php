@@ -126,7 +126,9 @@ function checkSteamDatabase() {
                 $comid = $steam_profile->steamID64;
             }
         }
-        db ('INSERT INTO '.$prefix."socialgameviewer_users (`id`, `steamid`, `comid`, `userid`) VALUES (NULL, '".$get['steamid']."', '".$comid."', '".$get['id']."');");
+        if ($comid != "") {
+            db ('INSERT INTO '.$prefix."socialgameviewer_users (`id`, `steamid`, `comid`, `userid`) VALUES (NULL, '".$get['steamid']."', '".$comid."', '".$get['id']."');");
+        }
     }
 }
 
