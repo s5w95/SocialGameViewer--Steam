@@ -23,7 +23,8 @@ if(_adminMenu != 'true') exit;
         "view_newtab" => re($get['view_newtab'] == 1 ? ' checked="checked"' : ''),												 
         "cache_delay" => re($get['cache_delay']),
         "steam_api_key" => re($get['steam_api_key']),
-        "value" => _button_value_edit
+        "value" => _button_value_edit,
+        "what" => 'socialgameviewer'
         ));
 	 
     $status = @simplexml_load_file("http://hd-gamers.de/addons/socialgameviewer/version.xml");
