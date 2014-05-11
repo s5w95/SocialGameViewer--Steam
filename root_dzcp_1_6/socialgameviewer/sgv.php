@@ -13,7 +13,7 @@ include(basePath."/inc/bbcode.php");
 lang($language);
 $dir = "socialgameviewer";
 
-$lang = ($language == deutsch) ? german : english; 
+$lang = ($language == deutsch) ? 'german' : 'english';
 $output = $cache->get('socialgameviewer_'.$lang);
 
 if($output == null) {
