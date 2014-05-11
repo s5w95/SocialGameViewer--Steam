@@ -7,7 +7,7 @@ if(_adminMenu != 'true') exit;
       $show = error(_error_wrong_permissions, 1);
     } else {
     
-    $this_db = $db['socialgameviewer_settings'];
+    $this_db = $sql_prefix.'socialgameviewer_settings';
     $qry = db("SELECT * FROM ".$this_db);
     $get = _fetch($qry);
     
