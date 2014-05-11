@@ -57,11 +57,15 @@ function getListFrom($playerid) {
     $list = "";
     $result = $steamUrl;
     $online_member = 0;	
-    if ($settings->view_addfriend == 1) {$x_size = $settings->x_size*0.88; }
-    else $x_size = $settings->x_size;
+	$add = "";
+    if ($settings->view_addfriend) {
+		$x_size = $settings->x_size*0.88;
+		$add = '<img src="http://steamsignature.com/AddFriend.png" width="'.$width.'"/>'
+	} else {
+		$x_size = $settings->x_size;
+	}
     $width = $settings->x_size*0.12; 
-    $add = '<img src="http://steamsignature.com/AddFriend.png" width="'.$width.'"/>';
-    
+
     for ($i=0 ; $i < $count  && $online_member < $settings->max_disp ; $i++)
     {				
         $steamid = $result->response->players[$i]->steamid;
