@@ -1,5 +1,0 @@
-1.3
-- Ajax loading script 
-|-> Seitenladezeit wird dadurch stark verbessert vor allem bei vielen Usern. 
-|-> SteamServer antwortzeiten werden abgefangen und verzögern ebenfalls die ladezeit nichtmehr.
-|-> Cachetime (Aktualisierungsrate) kann nun auch auf niedrige Zeiten (120-60 sek) gestellt werden ohne das die Seite länger läd.

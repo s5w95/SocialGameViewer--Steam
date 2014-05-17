@@ -3,14 +3,14 @@
 	$.ajax(
 	{
 		type: "GET",
-		url: "../socialgameviewer/sgv.php",
+		url: "../socialgameviewer/index.php",
 		data: "sgv_loading",
 		cache:false,
 		dataType:"html",
 		success: function(sgv_loading)
 	{
 		$('#sgv_loading').empty();
-		$('<span>'+sgv_loading+'</span>').appendTo('#sgv_loading');
+		$(''+sgv_loading+'').appendTo('#sgv_loading');
 	}
 	});   
 </script>
