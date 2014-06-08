@@ -1,5 +1,8 @@
 SocialGameViewer
 =====================
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Tune389/Allround-SocialGameViewer/master/info/preview.png" alt="SocialGameViewer Preview"/>
+</p>
 
 Update 1.5.2 (pre-Alpha)
 - Optimized Image rendering
