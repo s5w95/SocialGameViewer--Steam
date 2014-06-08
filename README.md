@@ -18,6 +18,10 @@ SocialGameViewer
 
 <h2>Changelog:</h2>
 
+Update 1.5.2.1 (pre-Alpha
+- Optimized cache system
+
+
 Update 1.5.2 (pre-Alpha)
 - Optimized Image rendering
 - Add Cache System for Images, Api, more

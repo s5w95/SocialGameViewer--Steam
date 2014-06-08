@@ -1,0 +1,109 @@
+
+<form name="socialgameviewer" action="?admin=[what]&amp;do=update" method="post" onsubmit="return(DZCP.submitButton())"> 
+    <table class="hperc" cellspacing="1">
+    <tr>
+        <td class="contentBottom" colspan="2"></td>
+    </tr>
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">Anzeigelimit:</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="number" name="max_disp" value="[max_disp]" class="inputField_dis"
+            onfocus="this.className='inputField_en';"
+            onblur="this.className='inputField_dis';" />
+        </td>
+    </tr>
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">Breite:</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="number" name="x_size" value="[x_size]" class="inputField_dis"
+            onfocus="this.className='inputField_en';"
+            onblur="this.className='inputField_dis';" />
+        </td>
+    </tr>
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">Aktualisierungsrate: (in Sekunden)</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="number" name="cache_delay" value="[cache_delay]" class="inputField_dis"
+            onfocus="this.className='inputField_en';"
+            onblur="this.className='inputField_dis';" />
+        </td>
+    </tr>
+        <tr>
+        <td class="contentBottom" colspan="2">Sichtbarkeit:</td>
+    </tr>
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">Private:</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="checkbox" class="check" id="tr" name="view_privat" value="1"[view_privat] />
+        </td>
+    </tr>  
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">Offline:</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="checkbox" class="check" id="tr" name="view_offline" value="1"[view_offline] />
+        </td>
+    </tr>
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">AddFriend Button:</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="checkbox" class="check" id="tr" name="view_addfriend" value="1"[view_addfriend] />
+        </td>
+    </tr>
+    <tr>
+        <td class="contentBottom" colspan="2">Link:</td>
+    </tr>
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">SteamProfile:</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="checkbox" class="check" id="tr" name="view_steamlink" value="1"[view_steamlink] />
+        </td>
+    </tr>
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">NewTab:</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="checkbox" class="check" id="tr" name="view_newtab" value="1"[view_newtab] />
+        </td>
+    </tr>
+    <tr>
+        <td class="contentBottom" colspan="2">SteamAPI:</td>
+    </tr>
+    <tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">SteamAPIKey:</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="text" name="steam_api_key" value="[steam_api_key]" class="inputField_dis"
+            onfocus="this.className='inputField_en';"
+            onblur="this.className='inputField_dis';" />
+        </td>
+    </tr>    
+	<tr>
+        <td class="contentBottom" colspan="2">Output options:</td>
+    </tr>
+	<tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">Group: (Steam Group Mode only)</span></td>
+        <td class="contentMainFirst" align="center">
+            <input type="text" name="steam_group" value="[steam_group]" class="inputField_dis"
+            onfocus="this.className='inputField_en';"
+            onblur="this.className='inputField_dis';" />
+        </td>
+    </tr>
+	<tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">Input Modul:</span></td>
+        <td class="contentMainFirst" align="center">
+            <select name="input_modul">
+				[options_input_modules]
+			</select>
+        </td>
+    </tr>
+	<tr>
+        <td class="contentMainTop" width="130"><span class="fontBold">Output Modul:</span></td>
+        <td class="contentMainFirst" align="center">
+            <select name="output_modul">
+				[options_output_modules]
+			</select>
+        </td>
+    </tr>
+        <tr>
+            <td class="contentBottom" colspan="2"><input id="contentSubmit" type="submit" value="[value]" class="submit" /></td>
+        </tr>
+    </table>
+</form>

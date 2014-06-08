@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^render/([0-9]+)$ lib/Socialgameviewer/module/selfrenderimage/steam.user.php?comid=$1

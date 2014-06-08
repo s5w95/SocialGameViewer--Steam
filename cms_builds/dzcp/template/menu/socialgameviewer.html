@@ -1,0 +1,19 @@
+<script type="text/javascript">
+
+	$.ajax(
+	{
+		type: "GET",
+		url: "../socialgameviewer/index_dzcp.php",
+		data: "sgv_loading",
+		cache:false,
+		dataType:"html",
+		success: function(sgv_loading)
+	{
+		$('#sgv_loading').empty();
+		$(''+sgv_loading+'').appendTo('#sgv_loading');
+	}
+	});   
+</script>
+ <div id="sgv_loading" style="text-align:center;">
+	<img src="../inc/images/ajax_loading.gif" alt="" />				   
+</div>
