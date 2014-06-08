@@ -18,7 +18,21 @@ SocialGameViewer
 
 <h2>Changelog:</h2>
 
-Update 1.5.2.1 (pre-Alpha
+Update 1.5.3 (Beta)
+- Modul DZCP fixes
+
+Update 1.5.3 (pre Alpha)
+- Fix DZCP module now working
+- Change DZCP installer to 1.5.3
+- Add update notes for DZCP update 1.4->1.5.3
+- Add htacces for clean links -> banner only viewer
+(http://domain.dom/socialgameviewer/render/76561198COMID)
+- Add Ajax example
+- Change XML config file system
+- Add function to set input Mode
+- Add function to render
+
+Update 1.5.2.1 (pre-Alpha)
 - Optimized cache system
 
 
