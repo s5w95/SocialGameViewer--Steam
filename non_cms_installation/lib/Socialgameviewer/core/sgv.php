@@ -1,14 +1,12 @@
 <?php
-
 abstract class Sgv {
 
-    private $settings;
+    protected $settings;
     protected $players;
-
-	private $server_overloaded = false;
+	protected $server_overloaded = false;
 
     public function __construct($data) {
-		$this->settings = $data;
+		$this->settings = (object) $data;
 		$this->load_players();
     }
 
@@ -17,7 +15,7 @@ abstract class Sgv {
         $data = strtolower(trim($str));
         if ($data != '') 
         {
-            if (is_numeric($data) & ereg('7656119', $data)) {
+            if (is_numeric($data) & strpos($data,'7656119')) {
                 $ret = $data;
             } else if (substr($data,0,7) == 'steam_0') {
                 $tmp = explode(':',$data);
@@ -36,28 +34,30 @@ abstract class Sgv {
     }
 
     public function render_viewer() {
-		global $dir;
-        $disp = "";
-		$count = 0;
-		
-		$modul_name = $this->settings->modul;
-		$modul_file = $modul_name.'.php';
-		$modul_path = $dir.'/module/'.$modul_name.'/';
-		
-		if (file_exists($modul_path.$modul_file)) {
-			include $modul_path.$modul_file;
-		} else {
-			die ('Modul not found: '.$modul_path.$modul_file);
-		}
-		
-		foreach ($this->players as $player) {
-			if ($count >= $this->settings->max_disp) break;
-			if (!$this->settings->view_offline && !$player['online']) continue;
-			if (!$this->settings->view_privat && $player['visibility']) continue;
-			$count ++;
-			$disp .= render($player, $this->settings);
-		}
-		
+        $disp = SgvCache::get('output',$this->settings->cache_delay);
+        if ($disp === NULL) {
+            $disp = "";
+            $count = 0;
+
+            $modul_name = $this->settings->modul;
+            $modul_file = $modul_name.'.php';
+            $modul_path = SGV_BASE.'module/'.$modul_name.'/';
+
+            if (file_exists($modul_path.$modul_file)) {
+                include $modul_path.$modul_file;
+            } else {
+                die ('Modul not found: '.$modul_path.$modul_file);
+            }
+
+            foreach ($this->players as $player) {
+                if ($count >= $this->settings->max_disp) break;
+                if (!$this->settings->view_offline && !$player['online']) continue;
+                if (!$this->settings->view_privat && $player['visibility']) continue;
+                $count ++;
+                $disp .= render($player, $this->settings);
+            }
+            SgvCache::set($disp,'output');
+        }
 		echo $disp;
 		return true;
     }
@@ -76,7 +76,7 @@ abstract class Sgv {
 		return false;
     }
 	
-	private function get_xml() {
+	private function get_xml($xml) {
 		if($ret = simplexml_load_file($xml)) {
 			return $ret;
 		} else {
@@ -86,10 +86,13 @@ abstract class Sgv {
 	}
 
     private function get_steam_player_informations($comids = array()) {
-        $players = implode(",",(array)$comids);
-        return $this->getJson(
-			"http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$this->settings->steam_api_key."&steamids=".$players
-		);
+        $json = SgvCache::get('player_stats_json', $this->settings->cache_delay);
+        if ($json === NULL) {
+            $players = implode(",",(array)$comids);
+            $json = file_get_contents("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$this->settings->steam_api_key."&steamids=".$players);
+            SgvCache::set($json,'player_stats_json');
+        }
+        return json_decode($json);
     }
     
     public function load_player_informations($comids) {

@@ -1,10 +1,5 @@
 <?php
 
-/**
-* SocialGameViewer - User Image Generator
-* created by Tune389
-*/
-
 $image = new SteamImage($_GET['comid']);
 $image->render();
 

@@ -2,7 +2,7 @@
 
 class Sgv_steam_group extends Sgv {
 
-    private $group = 'hd-gamers-de';
+    private $group = '567858';
     
     public function set_group($group){
         $this->group = $group;
@@ -10,16 +10,21 @@ class Sgv_steam_group extends Sgv {
     
     public function load_players() {
 		$id = $this->group;
-        if (is_numeric($id)) {
-            $xml = "http://steamcommunity.com/gid/$id/memberslistxml/?xml=1";
-        } else {
+        $xml = SgvCache::get('group_xml_'.$id,$this->settings->cache_delay);
+        if ($xml === NULL) {
             $xml = "http://steamcommunity.com/groups/$id/memberslistxml/?xml=1";
-		}
-		
-		if($group = simplexml_load_file($xml)->members->steamID64) {
-			$this->load_player_informations($group);
-		} else {
-			$this->server_overloaded = true;
-		}
+            $xml = file_get_contents($xml);
+            SgvCache::set($xml, 'group_xml_'.$id);
+        }
+        if($group = simplexml_load_string($xml)->members->steamID64) {
+            $this->load_player_informations($group);
+        } else {
+            $this->server_overloaded = true;
+        }
     }
+}
+
+function sgv_set_group($group) {
+    global $sgv;
+    $sgv->group = $group;
 }
