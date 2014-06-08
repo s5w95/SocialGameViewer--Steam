@@ -1,5 +1,11 @@
-DZCP-SocialGameViewer
+SocialGameViewer
 =====================
+
+Update 1.5.2 (pre-Alpha)
+- Optimized Image rendering
+- Add Cache System for Images, Api, more
+- Fix DZCP Modul
+- Add some Config Settings
 
 Update 1.5 (pre Alpha):
 - System Komplett Überarbeitet OOP
