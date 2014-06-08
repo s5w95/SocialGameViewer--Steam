@@ -2,6 +2,8 @@
 
 class Sgv_dzcp extends Sgv {
 
+    private $uid = array();
+
     public function load_players() {
         global $sql_prefix;
         $prefix = $sql_prefix;
@@ -18,6 +20,7 @@ class Sgv_dzcp extends Sgv {
                 }
                 if ($user['comid'] != NULL & $user['level'] > 2) {
                     $ples[] = $user['comid'];
+                    $this->uid[$user['comid']] = $user['id'];
                 }
                 if ($user['bakid'] != $user['steamid'] & !empty($user['steamid']) &  !empty($user['bakid'])) {
                     db('delete FROM '.$prefix.'socialgameviewer_users WHERE userid = '.$user['userid']);
@@ -25,5 +28,13 @@ class Sgv_dzcp extends Sgv {
             }
         } while ($instand_reload);
         $this->load_player_informations($ples);
+    }
+
+    public function get_profile_url($comid) {
+        if ($this->settings->view_steamlink) {
+            return "http://steamcommunity.com/profiles/$comid/";
+        } else {
+            return "/user/?action=user&id=".$this->uid[$comid];
+        }
     }
 }

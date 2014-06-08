@@ -9,5 +9,5 @@
 			$x_size = $settings->x_size;
 		}
 
-		return '<img src="http://steamsignature.com/status/english/'.$player['comid'].'.png" width="'.$x_size.'"/>'.$add;
+		return '<a href="'.$player['profile_url'].'"><img src="http://steamsignature.com/status/english/'.$player['comid'].'.png" width="'.$x_size.'"/></a>'.$add;
 	}
