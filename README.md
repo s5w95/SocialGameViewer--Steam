@@ -5,21 +5,16 @@ SocialGameViewer
 </p>
 
 <h2>Features:</h2>
-- View complete steam groups or players from database
+- Show complete steam groups or players from database (dzcp)
 - Simple cache and config system
-- Own render-engine for Images
+- Render-service to generating steam images on your own server
 - Folder for self-coded output moduls with config
 - Simple optimisation for every CMS or Webpage
 
-<h3>Coming soon:</h3>
-- PHPFastCache support
-- Additional database caching
-- more output moduls
-
 <h2>Changelog:</h2>
 
-Update 1.5.2.1 (pre-Alpha
-- Optimized cache system
+Update 1.5.4
+- Clean up
 
 
 Update 1.5.2 (pre-Alpha)
