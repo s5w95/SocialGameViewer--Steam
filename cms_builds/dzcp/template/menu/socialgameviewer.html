@@ -10,7 +10,12 @@
 		success: function(sgv_loading)
 	{
 		$('#sgv_loading').empty();
-		$(''+sgv_loading+'').appendTo('#sgv_loading');
+		$(sgv_loading).appendTo('#sgv_loading');
+	},
+		error: function(response) 
+	{
+		$('#sgv_loading').empty();
+		$('#sgv_loading').append(response.responseText);
 	}
 	});   
 </script>

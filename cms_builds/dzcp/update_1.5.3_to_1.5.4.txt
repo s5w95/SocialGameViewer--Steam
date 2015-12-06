@@ -1,0 +1,6 @@
+- Keine neuen Funktionen, Update daher nicht nötig soweit alles läuft!
+- Falls doch:
+- Alle Files neu in den Root Ordner & Template kopieren
+- Fertig
+
+MfG Tune389
