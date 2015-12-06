@@ -1,6 +1,10 @@
 <?php
 if(_adminMenu != 'true') exit;
 
+	if (version_compare(PHP_VERSION, '5.4.0') < 0) {
+		die('php version outdated');
+	}
+
     $where = $where.': '._config_socialgameviewer;
     if($chkMe != 4)
     {
